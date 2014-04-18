@@ -19,38 +19,44 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-    // find all contacts with 'Mathias' in any name field
-    var options = new ContactFindOptions();
-    options.filter = "Mathias";
-    options.multiple = true; 
-    var fields = ["displayName", "name", "phoneNumbers"];
-    navigator.contacts.find(fields, onSuccess, onError, options);
+	// find all contacts with 'Mathias' in any name field
+	alert('--------onDeviceReady ');
+	var options = new ContactFindOptions();
+	options.filter = "Mathias";
+	options.multiple = true; 
+	var fields = ["displayName", "name", "phoneNumbers"];
+	navigator.contacts.find(fields, onSuccess, onError, options);
 }
 
 function onSuccess(contacts) {
-  for(var i = 0; i < contacts.length; i++) {
-    var html = '<div data-role="collapsible" data-inset="false">';
+	alert('--------onSuccess ' + contacts.length);
 
-    html += '<h2>' + contacts[i].displayName + '</h2>';
-    html += '<ul data-role="listview">'
+	for(var i = 0; i < contacts.length; i++) {
+		var contact = contacts[i];
+		//alert('--------onSuccess for =' + i + " contact " + contact.id +" displayname " + contact.displayName +" name "+ contact.name);
+		var html = '<div data-role="collapsible" data-inset="false">';
+		
+		if(contact.displayName != null){
+			html += '<h2>' + contacts[i].displayName + '</h2>';
+			html += '<ul data-role="listview">'
+			if(contact.phoneNumbers != null){
+				for(var j = 0; j < contact.phoneNumbers.length; j++) {
+					html += '<li>' + contact.phoneNumbers[j].type + 
+					": " + contact.phoneNumbers[j].value + '</li>';
+				}
+			}
+			
+			html += '</ul></div>';
+		}
+		
+		$('#contactsList').append(html);
+	}
 
-    var contact = contacts[i];
-
-    for(var j = 0; j < contact.phoneNumbers.length; j++) {
-      html += '<li>' + contact.phoneNumbers[j].type + 
-        ": " + contact.phoneNumbers[j].value + '</li>';
-    }
-
-    html += '</ul></div>';
-
-    $('#contactsList').append(html);
-  }
-
-  $('[data-role=collapsible]').collapsible().trigger('create');
+	$('[data-role=collapsible]').collapsible().trigger('create');
 }
 
 function onError(contactError) {
-  alert('onError!');
+	alert('onError!');
 }
- 
- 
+
+
