@@ -25,6 +25,7 @@ C:\dev\github_repository\ContactsList\platforms\android\assets\www\plugins \
 C:\dev\github_repository\ContactsList\platforms\android\assets\www\res \
 C:\dev\github_repository\ContactsList\platforms\android\assets\www\spec \
 C:\dev\github_repository\ContactsList\platforms\android\assets\www\spec.html \
+C:\dev\github_repository\ContactsList\platforms\android\assets\www\css\flat-ui.css \
 C:\dev\github_repository\ContactsList\platforms\android\assets\www\css\index.css \
 C:\dev\github_repository\ContactsList\platforms\android\assets\www\img\logo.png \
 C:\dev\github_repository\ContactsList\platforms\android\assets\www\js\index.js \

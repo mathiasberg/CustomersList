@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Contacts</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+
+</head>
+<body>
+	<div data-role="page" id="contactspage">
+
+		<div data-role="header">
+			<h1>Contacts</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+			<button id="load">Ladda kontakter</button>
+			<div id="contactsList"></div>
+		</div>
+		<!-- /content -->
+
+		<!-- /footer -->
+
+		<script type="text/javascript" src="js/contacts.js"></script>
+		<script type="text/javascript">
+		
+		$(document).on("click", "#load", function() {
+			$.mobile.loading('show');
+			searchContacts();
+			$.mobile.loading('hide');
+		}
+		);
+		$( "#contactspage" ).on( "pagebeforecreate", function( event ) {
+			//alert('pagebeforecreate');
+			console.log("####################### pagebeforecreate");
+			//ajaxCallPrograms();
+		});
+	
+		$( "#contactspage" ).on( "pagebeforeshow", function( event ) {
+			//alert('pagebeforecreate');
+			console.log("####################### pagebeforeshow");
+			//ajaxCallPrograms();
+		});
+		
+		$('#contactspage').on('pageshow', function(event) { //Workaround to show page loading on initial page load
+			//alert('pageshow');
+			console.log("####################### pageshow");
+			$.mobile.loading('show');
+			//searchContacts();
+			$.mobile.loading('hide');
+		});
+	
+		
+		</script>
+	
+	
+	</div>
+	<!-- /page -->
+	
+</body>
+</html>
